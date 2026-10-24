@@ -34,8 +34,9 @@ for src in "$ROOT"/ch*/*.c; do
     fi
 done
 
-for proj in "$ROOT"/projects/*/; do
-    if (cd "$proj" && make -s clean >/dev/null 2>&1; make -s test >"$BUILD/proj.out" 2>&1); then
+for proj in "$ROOT"/ch*/*/ "$ROOT"/projects/*/; do
+    [ -f "$proj/Makefile" ] || continue
+    if (cd "$proj" && make -s clean >/dev/null 2>&1; make -s test >"$BUILD/proj.out" 2>&1; s=$?; make -s clean >/dev/null 2>&1; exit $s); then
         pass=$((pass+1))
     else
         echo "FAIL project $(basename "$proj")"; tail -20 "$BUILD/proj.out"; fail=$((fail+1))

@@ -1,0 +1,9 @@
+break average_of_top
+run --bug
+next 7
+info locals
+print sorted[0]@6
+print k
+backtrace
+continue
+quit
