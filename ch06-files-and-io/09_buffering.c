@@ -2,6 +2,7 @@
  * Chapter 6.9 - Buffering: why output sometimes appears late
  * stdio collects output in a buffer and writes it in big chunks.
  */
+#define _POSIX_C_SOURCE 200809L   /* for clock_gettime with -std=c11 */
 #include <stdio.h>
 #include <time.h>
 
