@@ -1,0 +1,13 @@
+# A day at the bank
+open asha 1500.00
+open dev 250
+open mei
+deposit mei 99.5
+withdraw dev 300          # fails: insufficient funds
+transfer asha dev 120.25
+transfer asha asha 5      # fails: same account
+deposit ravi 10           # fails: no such account
+deposit mei 12.345        # fails: three decimals
+deposit mei -4            # fails: negative
+withdrawl mei 1           # fails: typo
+balance dev
