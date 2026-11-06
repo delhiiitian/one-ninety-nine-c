@@ -15,7 +15,7 @@ for src in "$ROOT"/ch*/*.c; do
     name=$(basename "$src" .c)
     exe="$BUILD/$chapter-$name"
     extra=""
-    case "$chapter" in ch09*) extra="-pthread -lm" ;; esac
+    case "$chapter" in ch09*) extra="-pthread -lm -ldl" ;; esac
     if ! $CC $CFLAGS "$src" -o "$exe" $extra -lm 2>"$BUILD/err.txt"; then
         echo "FAIL (compile) $chapter/$name"; cat "$BUILD/err.txt"; fail=$((fail+1)); continue
     fi
